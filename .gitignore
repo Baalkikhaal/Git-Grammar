@@ -1,2 +1,5 @@
 linux/
 env-git/
+
+# Jupyter Notebook
+.ipynb_checkpoints
