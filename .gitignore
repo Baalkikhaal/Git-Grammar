@@ -1,5 +1,8 @@
+# If linux Git repository is cloned within the current repository, then ignore it.
 linux/
-env-git/
 
-# Jupyter Notebook
+# Ignore the python virtual environment.
+env/
+
+# Ignore checkpoints of Jupyter notebooks.
 .ipynb_checkpoints
