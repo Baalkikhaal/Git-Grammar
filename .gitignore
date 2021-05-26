@@ -6,3 +6,6 @@ env/
 
 # Ignore checkpoints of Jupyter notebooks.
 .ipynb_checkpoints
+
+# Ignore the Jupyter book build/ directory.
+_build/

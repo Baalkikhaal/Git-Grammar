@@ -1,0 +1,7 @@
+# Table of Contents YAML file
+- file: intro
+- file: Git-Names
+- file: Git-Verbs
+- file: Git-Names-(Intermediate)
+- file: Git-Verbs-(Intermediate)  
+- file: MiningGitRepository
