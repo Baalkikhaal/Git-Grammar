@@ -1,0 +1,1508 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GIT Basics &#8212; Git Grammar</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Git Verbs (Intermediate)" href="Git-Verbs-%28Intermediate%29.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Git Grammar</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Git Grammar
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Git-Names.html">
+   Git Names
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Git-Verbs.html">
+   Git Verbs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Git-Names-%28Intermediate%29.html">
+   Git Names (Intermediate)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Git-Verbs-%28Intermediate%29.html">
+   Git Verbs (Intermediate)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   GIT Basics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/MiningGitRepository.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/MiningGitRepository.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   GIT Basics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lets-start-giting">
+     Lets start GITing !!!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-basics-using-jupyter-notebook">
+   Git Basics using Jupyter Notebook
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-computing">
+     Dynamic Computing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linux-git-repository">
+     Linux Git repository
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#executing-terminal-commands-in-jupyter-notebook">
+     Executing terminal commands in jupyter notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-information-mining">
+   System information mining
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#current-working-directory">
+     Current working directory
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limiting-man-page-output">
+     Limiting Man page output
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-the-files-in-the-git-repository">
+     List the files in the GIT repository
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-init-initialize-a-git-repository">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     git
+    </span>
+    <span class="pre">
+     init
+    </span>
+   </code>
+   : Initialize a GIT repository
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-a-gitignore-file">
+     Create a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .gitignore
+      </span>
+     </code>
+     file
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-add-tracking-the-files">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     git
+    </span>
+    <span class="pre">
+     add
+    </span>
+   </code>
+   : Tracking the files
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-staging-the-file">
+     Step 1: Staging the file
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-commiting-the-file">
+     Step 2: Commiting the file
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloning-an-existing-repository">
+   Cloning an existing repository
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clone-the-linux-kernel-source-tree">
+     Clone the linux kernel source tree
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mining-the-linux-git-repository">
+   Mining the Linux Git Repository
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-log-viewing-the-commit-history">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     git
+    </span>
+    <span class="pre">
+     log
+    </span>
+   </code>
+   : Viewing the commit history
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#total-number-of-commits">
+     Total number of commits
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-and-latest-3-commits">
+     First and latest 3 commits
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-power-with-git-log">
+     More power with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       git
+      </span>
+      <span class="pre">
+       log
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limiting-log-output">
+     Limiting log output
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#author-filter">
+       Author filter
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#temporal-filter">
+       Temporal filter
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#filters-honour-boolean-and-logic">
+       Filters honour Boolean AND logic
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#path-filter">
+       Path filter
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#string-filter-git-s-pickaxe">
+       String filter: Git’s
+       <strong>
+        pickaxe
+       </strong>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-remote-working-with-remotes">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     git
+    </span>
+    <span class="pre">
+     remote
+    </span>
+   </code>
+   : Working with remotes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-the-remote-source-to-the-current-clone-of-the-repository">
+     Check the remote source to the current clone of the repository
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fetch-the-latest-commits-to-the-repository">
+     Fetch the latest commits to the repository
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-tag-viewing-the-release-history">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     git
+    </span>
+    <span class="pre">
+     tag
+    </span>
+   </code>
+   : Viewing the release history
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#total-releases-of-linux-kernel">
+     Total releases of linux kernel
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#latest-10-versions-of-linux">
+     Latest 10 versions of linux
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="git-basics">
+<h1>GIT Basics<a class="headerlink" href="#git-basics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lets-start-giting">
+<h2>Lets start GITing !!!<a class="headerlink" href="#lets-start-giting" title="Permalink to this headline">¶</a></h2>
+<p>Git is a version control software again developed by Linus Torvalds with a motivation to track humongous projects like the Linux Kernel. In the words of Linus, <strong>GIT is a stupid content tracker</strong>.</p>
+<p>There are many resources for delving into Git; its fundamentals, implementation, philosophy.</p>
+<p>References:</p>
+<p><a class="reference external" href="http://tom.preston-werner.com/2009/05/19/the-git-parable.html">The Git Parable</a> by Tom Preston Werner introduces succintly the philosophy of Git, parallels and differences with contemporary version control systems.</p>
+<p><a class="reference external" href="https://git-scm.com/book/en/v2">Pro Git</a> by Scott Chacon and Ben Straub</p>
+<p><a class="reference external" href="http://man7.org/linux/man-pages/man1/git.1.html">Git Man page</a> The <a class="reference external" href="https://www.kernel.org/doc/man-pages/">Linux Man Page project</a> documents the Linux kernel itself. is for a seasoned linux user comfortable with self-exploration and an ability to read the documentation. This <a class="reference external" href="https://www.maketecheasier.com/read-linux-man-page/">HowTo</a> helps you decode man pages.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="git-basics-using-jupyter-notebook">
+<h1>Git Basics using Jupyter Notebook<a class="headerlink" href="#git-basics-using-jupyter-notebook" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dynamic-computing">
+<h2>Dynamic Computing<a class="headerlink" href="#dynamic-computing" title="Permalink to this headline">¶</a></h2>
+<p>Primarily using the Pro Git as a reference, let us explore the basics of Git. In the earlier attempts to document, we have used tools like LibreOffice, simple static markdown using Atom Editor’s gitting functionality, to explore <code class="docutils literal notranslate"><span class="pre">Git</span></code>. However, we will see in the coming cells that Jupyter offers more freedom when it comes to documenting a programming/computing tool like <code class="docutils literal notranslate"><span class="pre">Git</span></code>. Due to the dynamic computing nature of Jupter notebook it is easy to have an analysis <strong>up-to-date</strong> with dynamic, time changing data.</p>
+</div>
+<div class="section" id="linux-git-repository">
+<h2>Linux Git repository<a class="headerlink" href="#linux-git-repository" title="Permalink to this headline">¶</a></h2>
+<p>Since Git deals with versioning content, let us take for concrete purposes, the Linux Git repository itself to understand Gitting.</p>
+<p>The linux Project is a multi developer, multi user, multi-national, multi documenter open source project with a development history of more than 20 years. The originator of Linux, Linus Torvalds, also developed Git to version control such a complex project as linux.</p>
+<p>Let us try to learn the basics of Git using the Linux Git repository itself as a case study :)</p>
+<p>We will mine the git related data of this repository in this notebook using the commonly used Git commands.</p>
+</div>
+<div class="section" id="executing-terminal-commands-in-jupyter-notebook">
+<h2>Executing terminal commands in jupyter notebook<a class="headerlink" href="#executing-terminal-commands-in-jupyter-notebook" title="Permalink to this headline">¶</a></h2>
+<p>Exploring <code class="docutils literal notranslate"><span class="pre">git</span></code> involves executing git commands at the terminal. However to have a similar terminal like execution environment, Jupyter provides way to execute terminal commands in the notebook itself.</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">!</span></code>(spelled <code class="docutils literal notranslate"><span class="pre">BANG!</span></code>), one can <a class="reference external" href="https://support.anaconda.com/hc/en-us/articles/360023858254-Executing-Terminal-Commands-in-Jupyter-Notebooks">execute linux terminal commands within the notebook</a>. This is a useful feature if we want to get system related information or use other system tools to do computing.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="system-information-mining">
+<h1>System information mining<a class="headerlink" href="#system-information-mining" title="Permalink to this headline">¶</a></h1>
+<p>Before we explore the <code class="docutils literal notranslate"><span class="pre">git</span></code>, let us first explore some system related informtaion which is useful in the course. Some basic system related information of interest is:</p>
+<ul class="simple">
+<li><p>current working directory : The root directory of the repository is given by <code class="docutils literal notranslate"><span class="pre">pwd</span></code> which <strong>p</strong>rints name of (current or) <strong>w</strong>orking <strong>d</strong>irectory.</p></li>
+<li><p>listing the files in the directory : <code class="docutils literal notranslate"><span class="pre">ls</span></code> lists the files. Along with the option <code class="docutils literal notranslate"><span class="pre">-al</span></code> lists the hiddens contents also.</p></li>
+<li><p>manuals for commands : <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">&lt;command&gt;</span></code> prints the manual to the system command <code class="docutils literal notranslate"><span class="pre">&lt;commnad&gt;</span></code>.</p></li>
+<li><p>limiting manual command output : <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">tail</span></code> are utility commands to limit the print output</p></li>
+</ul>
+<div class="section" id="current-working-directory">
+<h2>Current working directory<a class="headerlink" href="#current-working-directory" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pwd
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/fubar/GithubProjects/GitBasics
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>NOTE</strong> To know about a specific Linux command which is executed in this <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> notebook execute <code class="docutils literal notranslate"><span class="pre">!man</span> <span class="pre">&lt;command&gt;</span></code>. For example <code class="docutils literal notranslate"><span class="pre">!man</span> <span class="pre">pwd</span></code></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>man pwd
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PWD(1)                           User Commands                          PWD(1)
+
+NNAAMMEE
+       pwd - print name of current/working directory
+
+SSYYNNOOPPSSIISS
+       ppwwdd [_O_P_T_I_O_N]...
+
+DDEESSCCRRIIPPTTIIOONN
+       Print the full filename of the current working directory.
+
+       --LL, ----llooggiiccaall
+              use PWD from environment, even if it contains symlinks
+
+       --PP, ----pphhyyssiiccaall
+              avoid all symlinks
+
+       ----hheellpp display this help and exit
+
+       ----vveerrssiioonn
+              output version information and exit
+
+       If no option is specified, --PP is assumed.
+
+       NOTE:  your shell may have its own version of pwd, which usually super‐
+       sedes the version described here.  Please refer to your  shell&#39;s  docu‐
+       mentation for details about the options it supports.
+
+AAUUTTHHOORR
+       Written by Jim Meyering.
+
+RREEPPOORRTTIINNGG BBUUGGSS
+       GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;
+       Report pwd translation bugs to &lt;http://translationproject.org/team/&gt;
+
+CCOOPPYYRRIIGGHHTT
+       Copyright  ©  2017  Free Software Foundation, Inc.  License GPLv3+: GNU
+       GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.
+       This is free software: you are free  to  change  and  redistribute  it.
+       There is NO WARRANTY, to the extent permitted by law.
+
+SSEEEE AALLSSOO
+       getcwd(3)
+
+       Full documentation at: &lt;http://www.gnu.org/software/coreutils/pwd&gt;
+       or available locally via: info &#39;(coreutils) pwd invocation&#39;
+
+GNU coreutils 8.28               January 2018                           PWD(1)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="limiting-man-page-output">
+<h2>Limiting Man page output<a class="headerlink" href="#limiting-man-page-output" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes the man pages are lengthy. To restrict the man page output to few lines, let us <strong>pipeline</strong> the <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">&lt;command&gt;</span></code> output as an input to another system command that sieves out the first few lines. The subsequent command is the <code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-&lt;number&gt;</span></code> following the pipeline <code class="docutils literal notranslate"><span class="pre">|</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>man <span class="nb">pwd</span> <span class="p">|</span> head -10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PWD(1)                           User Commands                          PWD(1)
+
+NAME
+       pwd - print name of current/working directory
+
+SYNOPSIS
+       pwd [OPTION]...
+
+DESCRIPTION
+       Print the full filename of the current working directory.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-the-files-in-the-git-repository">
+<h2>List the files in the GIT repository<a class="headerlink" href="#list-the-files-in-the-git-repository" title="Permalink to this headline">¶</a></h2>
+<p>The following files are present in the current gitted repository:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls -al
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 124
+drwxr-xr-x 7 fubar fubar  4096 May 27 03:50  .
+drwxr-xr-x 7 fubar fubar  4096 May 27 03:18  ..
+drwxr-xr-x 8 fubar fubar  4096 May 27 03:50  .git
+-rw-r--r-- 1 fubar fubar   200 May 27 03:18  .gitignore
+drwxr-xr-x 2 fubar fubar  4096 May 27 03:18  .ipynb_checkpoints
+drwxr-xr-x 2 fubar fubar  4096 May 27 03:18  Git-Grammar-Book
+-rw-r--r-- 1 fubar fubar  2889 May 27 03:18 &#39;Git-Names-(Intermediate).ipynb&#39;
+-rw-r--r-- 1 fubar fubar  4592 May 27 03:18  Git-Names.ipynb
+-rw-r--r-- 1 fubar fubar  3929 May 27 03:18 &#39;Git-Verbs-(Intermediate).ipynb&#39;
+-rw-r--r-- 1 fubar fubar  7886 May 27 03:18  Git-Verbs.ipynb
+-rw-r--r-- 1 fubar fubar 41371 May 27 03:18  MiningGitRepository.ipynb
+-rw-r--r-- 1 fubar fubar   585 May 27 03:18  README.md
+drwxr-xr-x 5 fubar fubar  4096 May 27 03:40  _build
+-rw-r--r-- 1 fubar fubar    47 May 27 03:21  _config.yml
+-rw-r--r-- 1 fubar fubar   176 May 27 03:50  _toc.yml
+-rw-r--r-- 1 fubar fubar     8 May 27 03:18  env-requirements.txt
+drwxr-xr-x 2 fubar fubar  4096 May 27 03:18  images
+-rw-r--r-- 1 fubar fubar  1003 May 27 03:35  intro.md
+-rw-r--r-- 1 fubar fubar   837 May 27 03:18  requirements.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this notebook, we will use the following system tools to perform data mining on the linux Gitted repository</p>
+<ul class="simple">
+<li><p>wc - print newline, word, and byte counts for each file</p></li>
+<li><p>tail - output the last part of files</p></li>
+<li><p>head - output the first part of files</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>man head <span class="p">|</span> head -10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HEAD(1)                          User Commands                         HEAD(1)
+
+NAME
+       head - output the first part of files
+
+SYNOPSIS
+       head [OPTION]... [FILE]...
+
+DESCRIPTION
+       Print  the  first  10 lines of each FILE to standard output.  With more
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>man git <span class="p">|</span> head -10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GIT(1)                            Git Manual                            GIT(1)
+
+NAME
+       git - the stupid content tracker
+
+SYNOPSIS
+       git [--version] [--help] [-C &lt;path&gt;] [-c &lt;name&gt;=&lt;value&gt;]
+           [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]
+col: write error
+grotty:&lt;standard input&gt; (&lt;standard input&gt;):15562:fatal error: output error
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="git-init-initialize-a-git-repository">
+<h1><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>: Initialize a GIT repository<a class="headerlink" href="#git-init-initialize-a-git-repository" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> creates a <code class="docutils literal notranslate"><span class="pre">.git</span></code> subdirectory that holds information of the various versions of the repository in the form of commits. Commits are <strong>snapshots</strong> as explained in the <a class="reference external" href="http://tom.preston-werner.com/2009/05/19/the-git-parable.html">GIT parable</a> by Tom Preston Werner. The deeper aspects are not covered here and postponed to an advanced article.</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> tracks the status of the repository by checking which files are tracked, yet to be tracked, staged, modified</p>
+<p><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file : files which we do not intend to track can be listed in this hidden file. <code class="docutils literal notranslate"><span class="pre">git</span></code> ignores tracking them altogether.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git init
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reinitialized existing Git repository in /home/fubar/GithubProjects/GitBasics/.git/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch master
+Your branch is up to date with &#39;origin/master&#39;.
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+	<span class=" -Color -Color-Red">_build/</span>
+	<span class=" -Color -Color-Red">_config.yml</span>
+	<span class=" -Color -Color-Red">_toc.yml</span>
+	<span class=" -Color -Color-Red">intro.md</span>
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="create-a-gitignore-file">
+<h2>Create a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file<a class="headerlink" href="#create-a-gitignore-file" title="Permalink to this headline">¶</a></h2>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file and let us add the <code class="docutils literal notranslate"><span class="pre">env-git/</span></code> to the ignore list</p>
+<p>Check if the <code class="docutils literal notranslate"><span class="pre">env-git</span></code> venv is not listed in the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> output</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch master
+Your branch is up to date with &#39;origin/master&#39;.
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+	<span class=" -Color -Color-Red">_build/</span>
+	<span class=" -Color -Color-Red">_config.yml</span>
+	<span class=" -Color -Color-Red">_toc.yml</span>
+	<span class=" -Color -Color-Red">intro.md</span>
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="git-add-tracking-the-files">
+<h1><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>: Tracking the files<a class="headerlink" href="#git-add-tracking-the-files" title="Permalink to this headline">¶</a></h1>
+<p>Once the <code class="docutils literal notranslate"><span class="pre">git</span></code> repository has been initialized, we need to track the files in the repository. Each file in the working directory is in one of two states:</p>
+<ul class="simple">
+<li><p>tracked</p></li>
+<li><p>untracked</p></li>
+</ul>
+<p>Tracking a file, in short, means that Git knows about that file.</p>
+<p>To check the state of any file, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span> <span class="pre">&lt;file&gt;</span></code>.</p>
+<p>Git considers a tracked file to be either a staged, unmodified or modified file.</p>
+<p>For an hitherto untracked file, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file&gt;</span></code> stages the file <code class="docutils literal notranslate"><span class="pre">&lt;file&gt;</span></code>. Check the status to see if the files are staged. Once staged, <code class="docutils literal notranslate"><span class="pre">git</span></code> places them in a staging directory and the status of the file is <code class="docutils literal notranslate"><span class="pre">staged</span></code>.</p>
+<p>Further edit to a staged file can change its state to <code class="docutils literal notranslate"><span class="pre">modified</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Unmodified</span></code> files are tracked files from previous snapshots.</p>
+<p>To avoid tracking a file, add its name to the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> hidden file.</p>
+<p><img alt="Status-of-files-in-a-Git-Repository" src="_images/GIT-Basics-00-StatesOfFiles.png" /></p>
+<div class="section" id="step-1-staging-the-file">
+<h2>Step 1: Staging the file<a class="headerlink" href="#step-1-staging-the-file" title="Permalink to this headline">¶</a></h2>
+<p>Let me stage the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, <code class="docutils literal notranslate"><span class="pre">README.md</span></code> and the current Jupyter notebook files among other things.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git add .gitignore
+<span class="o">!</span>git add .ipynb_checkpoints/
+<span class="o">!</span>git add MiningGitRepository.ipynb
+<span class="o">!</span>git add README.md
+<span class="o">!</span>git add env-requirements.txt
+<span class="o">!</span>git add requirements.txt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch master
+Your branch is up to date with &#39;origin/master&#39;.
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+	<span class=" -Color -Color-Red">_build/</span>
+	<span class=" -Color -Color-Red">_config.yml</span>
+	<span class=" -Color -Color-Red">_toc.yml</span>
+	<span class=" -Color -Color-Red">intro.md</span>
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-commiting-the-file">
+<h2>Step 2: Commiting the file<a class="headerlink" href="#step-2-commiting-the-file" title="Permalink to this headline">¶</a></h2>
+<p>To complete the tracking, we need to <code class="docutils literal notranslate"><span class="pre">commit</span></code> the file a <code class="docutils literal notranslate"><span class="pre">snapshot</span></code>. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> completes the tracking.</p>
+<p>A commit usually involves a commit message that summarizes the changes done in the commit. It is a single sentence and convention is to keep it as ~~succint~~ simple as possible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git commit -m <span class="s1">&#39;my first commit&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch master
+Your branch is up to date with &#39;origin/master&#39;.
+
+Untracked files:
+	<span class=" -Color -Color-Red">_build/</span>
+	<span class=" -Color -Color-Red">_config.yml</span>
+	<span class=" -Color -Color-Red">_toc.yml</span>
+	<span class=" -Color -Color-Red">intro.md</span>
+
+nothing added to commit but untracked files present
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch master
+Your branch is up to date with &#39;origin/master&#39;.
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+	<span class=" -Color -Color-Red">_build/</span>
+	<span class=" -Color -Color-Red">_config.yml</span>
+	<span class=" -Color -Color-Red">_toc.yml</span>
+	<span class=" -Color -Color-Red">intro.md</span>
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="cloning-an-existing-repository">
+<h1>Cloning an existing repository<a class="headerlink" href="#cloning-an-existing-repository" title="Permalink to this headline">¶</a></h1>
+<p>If we want to work with existing Git repositories, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">&lt;repository&gt;</span></code> copies the whole repository. The copy includes not just the working directory, but also the complete commit history of the project. This feature is unique to Git in comparison to the other VCS’es.</p>
+<div class="section" id="clone-the-linux-kernel-source-tree">
+<h2>Clone the linux kernel source tree<a class="headerlink" href="#clone-the-linux-kernel-source-tree" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/torvalds/linux">Linux Git repository</a> is hosted on the GitHub server.
+This repository hosts the Linux kernel source tree.
+The repository has a relatively big size (<span class="math notranslate nohighlight">\(~ 2.5 GB\)</span>) and might take a while to clone. So go for a stroll and come back with fresh mind.
+After a successful clone, a <code class="docutils literal notranslate"><span class="pre">linux/</span></code> subdirectory is created in our root directory</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git clone https://github.com/torvalds/linux.git
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;linux&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Enumerating objects: 8122444
+remote: Enumerating objects: 8122484, done.
+remote: Counting objects:   2% (1/40)
+remote: Counting objects:   5% (2/40)
+remote: Counting objects:   7% (3/40)
+remote: Counting objects:  10% (4/40)
+remote: Counting objects:  12% (5/40)
+remote: Counting objects:  15% (6/40)
+remote: Counting objects:  17% (7/40)
+remote: Counting objects:  20% (8/40)
+remote: Counting objects:  22% (9/40)
+remote: Counting objects:  25% (10/40)
+remote: Counting objects:  27% (11/40)
+remote: Counting objects:  30% (12/40)
+remote: Counting objects:  32% (13/40)
+remote: Counting objects:  35% (14/40)
+remote: Counting objects:  37% (15/40)
+remote: Counting objects:  40% (16/40)
+remote: Counting objects:  42% (17/40)
+remote: Counting objects:  45% (18/40)
+remote: Counting objects:  47% (19/40)
+remote: Counting objects:  50% (20/40)
+remote: Counting objects:  52% (21/40)
+remote: Counting objects:  55% (22/40)
+remote: Counting objects:  57% (23/40)
+remote: Counting objects:  60% (24/40)
+remote: Counting objects:  62% (25/40)
+remote: Counting objects:  65% (26/40)
+remote: Counting objects:  67% (27/40)
+remote: Counting objects:  70% (28/40)
+remote: Counting objects:  72% (29/40)
+remote: Counting objects:  75% (30/40)
+remote: Counting objects:  77% (31/40)
+remote: Counting objects:  80% (32/40)
+remote: Counting objects:  82% (33/40)
+remote: Counting objects:  85% (34/40)
+remote: Counting objects:  87% (35/40)
+remote: Counting objects:  90% (36/40)
+remote: Counting objects:  92% (37/40)
+remote: Counting objects:  95% (38/40)
+remote: Counting objects:  97% (39/40)
+remote: Counting objects: 100% (40/40)
+remote: Counting objects: 100% (40/40), done.
+remote: Compressing objects:   7% (1/13)
+remote: Compressing objects:  15% (2/13)
+remote: Compressing objects:  23% (3/13)
+remote: Compressing objects:  30% (4/13)
+remote: Compressing objects:  38% (5/13)
+remote: Compressing objects:  46% (6/13)
+remote: Compressing objects:  53% (7/13)
+remote: Compressing objects:  61% (8/13)
+remote: Compressing objects:  69% (9/13)
+remote: Compressing objects:  76% (10/13)
+remote: Compressing objects:  84% (11/13)
+remote: Compressing objects:  92% (12/13)
+remote: Compressing objects: 100% (13/13)
+remote: Compressing objects: 100% (13/13), done.
+Receiving objects:   0% (1/8122484)   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (1701/8122484), 252.01 KiB | 452.00 KiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (4479/8122484), 2.03 MiB | 1.24 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (8405/8122484), 3.71 MiB | 1.40 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (12048/8122484), 5.46 MiB | 1.50 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (15973/8122484), 7.22 MiB | 1.55 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (18900/8122484), 9.09 MiB | 1.73 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (22237/8122484), 10.82 MiB | 1.76 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (25494/8122484), 12.32 MiB | 1.69 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (28614/8122484), 13.99 MiB | 1.68 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (32009/8122484), 15.62 MiB | 1.66 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (34985/8122484), 17.35 MiB | 1.64 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (36642/8122484), 18.64 MiB | 1.45 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (38842/8122484), 19.15 MiB | 1.40 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (41595/8122484), 20.36 MiB | 1.31 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (44926/8122484), 21.96 MiB | 1.29 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (47953/8122484), 23.68 MiB | 1.27 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (51139/8122484), 25.39 MiB | 1.46 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   0% (54131/8122484), 27.40 MiB | 1.45 MiB/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>CLARIFICATION</strong>: After a successful clone, there are now two GITS functioning (i.e. two locations of <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory within the root directory). The original <code class="docutils literal notranslate"><span class="pre">.git</span></code> of the root directory and the bottom-level <code class="docutils literal notranslate"><span class="pre">.git</span></code> of the <code class="docutils literal notranslate"><span class="pre">linux/</span></code> subdirectory.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>IMPORTANT</strong>: Add the <code class="docutils literal notranslate"><span class="pre">linux/</span></code> subdirectory to the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>. We do not want to git our <code class="docutils literal notranslate"><span class="pre">linux/</span></code> subdirectory due to its sheer size. The <code class="docutils literal notranslate"><span class="pre">linux</span></code> subdirectory itself has its own <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file; however it is ignored by the top directory <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>.</p>
+</div></blockquote>
+<p>To check the status of the root git repository, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>. without options to the <code class="docutils literal notranslate"><span class="pre">git</span></code>, it assumes the <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory is present at the <code class="docutils literal notranslate"><span class="pre">pwd</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+	<span class=" -Color -Color-Red">modified:   MiningGitRepository.ipynb</span>
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="mining-the-linux-git-repository">
+<h1>Mining the Linux Git Repository<a class="headerlink" href="#mining-the-linux-git-repository" title="Permalink to this headline">¶</a></h1>
+<p>Let us mine the cloned Linux repository to explore the <code class="docutils literal notranslate"><span class="pre">git</span></code> basics.</p>
+<p>In order to check the status of the bottom-level git repository (tracking the <code class="docutils literal notranslate"><span class="pre">linux/</span></code> subdirectory) use the <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">&lt;pathname&gt;</span></code> where the <pathname> can be relative also.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch master
+Your branch is behind &#39;origin/master&#39; by 302 commits, and can be fast-forwarded.
+  (use &quot;git pull&quot; to update your local branch)
+
+nothing to commit, working tree clean
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us decipher the status message. The key words are <code class="docutils literal notranslate"><span class="pre">On</span> <span class="pre">branch</span> <span class="pre">master</span></code>, <code class="docutils literal notranslate"><span class="pre">behind</span> <span class="pre">origin/master</span></code>. If the status message is that branch is behind the origin, let us not worry. First keyword says we are on the branch <code class="docutils literal notranslate"><span class="pre">master</span></code> of the current clone. and second keyword says that the current branch is behind the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch of <code class="docutils literal notranslate"><span class="pre">origin</span></code> source by some commits.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="git-log-viewing-the-commit-history">
+<h1><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>: Viewing the commit history<a class="headerlink" href="#git-log-viewing-the-commit-history" title="Permalink to this headline">¶</a></h1>
+<p>Our project development progresses as a series of snapshots.
+These snapshots are linked to each other by the process of commiting.</p>
+<p>Let us check the commit history of the linux repository.
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> is the most basic command. By default, this command lists the commits in reverse chronological order.</p>
+<div class="section" id="total-number-of-commits">
+<h2>Total number of commits<a class="headerlink" href="#total-number-of-commits" title="Permalink to this headline">¶</a></h2>
+<p>To get a feel for the size of the Linux project, let us find the total number of commits.</p>
+<p>The linux project is a relatively mature project with a timeline of more than 20 years. The maturity of the project is evident from the total number of commits running more than <code class="docutils literal notranslate"><span class="pre">850k</span></code>. This is extracted by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--oneline</span></code> and redirecting output to <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code> which counts the lines.</p>
+<p>The option <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">linux</span></code> is to ensure the git processes the linux directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline <span class="p">|</span> wc -l
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>872749
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="first-and-latest-3-commits">
+<h2>First and latest 3 commits<a class="headerlink" href="#first-and-latest-3-commits" title="Permalink to this headline">¶</a></h2>
+<p>Let us check some of the commit messages. Due to the size of the linux repository, let us limit to the latest 3 commits. For this use <code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-3</span></code> command as a pipe to the output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>. An alternative command without pipelining is using option <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">-3</span></code>. The latter has the advantage of retaining the git color coding scheme.</p>
+<p>For the first 3 commits, use <code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-3</span></code> command.</p>
+<p>Most of the commits are patches qualified by the <code class="docutils literal notranslate"><span class="pre">[PATCH]</span></code> header. It seems that there is a convention followed for commit messages for the linux repository.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline <span class="p">|</span> head -3
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4dd58158254c Merge branch &#39;akpm&#39; (patches from Andrew)
+869712fd3de5 mm: memcontrol: fix network errors from failing __GFP_ATOMIC charges
+656d57119326 mm/memory_hotplug: fix updating the node span
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline -3
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">e472c64aa4fa (</span><span class=" -Color -Color-Bold -Color-Bold-Cyan">HEAD -&gt; </span><span class=" -Color -Color-Bold -Color-Bold-Green">master</span><span class=" -Color -Color-Yellow">)</span> Merge tag &#39;dmaengine-fix-5.4-rc6&#39; of git://git.infradead.org/users/vkoul/slave-dma
+<span class=" -Color -Color-Yellow">320000e72ec0</span> Merge tag &#39;iommu-fixes-v5.4-rc5&#39; of git://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu
+<span class=" -Color -Color-Yellow">b66b449872d3</span> Merge tag &#39;gfs2-v5.4-rc5.fixes&#39; of git://git.kernel.org/pub/scm/linux/kernel/git/gfs2/linux-gfs2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline <span class="p">|</span> tail -3
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>baaa2c512dc1 [PATCH] Avoid deadlock in sync_page_io by using GFP_NOIO
+8d38eadb7a97 [PATCH] mmtimer build fix
+1da177e4c3f4 Linux-2.6.12-rc2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="more-power-with-git-log">
+<h2>More power with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code><a class="headerlink" href="#more-power-with-git-log" title="Permalink to this headline">¶</a></h2>
+<p>Some of the popular options of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code> or <code class="docutils literal notranslate"><span class="pre">--patch</span></code> which shows the difference introduced in each commit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-&lt;number&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">&lt;number&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--max-count=&lt;number&gt;</span></code>: limit the number of commits to <number></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--stat</span></code> give the diff stats for each commit</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log -p -2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">commit e472c64aa4fa6150c6076fd36d101d667d71c30a (</span><span class=" -Color -Color-Bold -Color-Bold-Cyan">HEAD -&gt; </span><span class=" -Color -Color-Bold -Color-Bold-Green">master</span><span class=" -Color -Color-Yellow">)</span>
+Merge: 320000e72ec0 bacdcb6675e1
+Author: Linus Torvalds &lt;torvalds@linux-foundation.org&gt;
+Date:   Thu Oct 31 07:34:09 2019 +0000
+
+    Merge tag &#39;dmaengine-fix-5.4-rc6&#39; of git://git.infradead.org/users/vkoul/slave-dma
+    
+    Pull dmaengine fixes from Vinod Koul:
+     &quot;A few fixes to the dmaengine drivers:
+    
+       - fix in sprd driver for link list and potential memory leak
+    
+       - tegra transfer failure fix
+    
+       - imx size check fix for script_number
+    
+       - xilinx fix for 64bit AXIDMA and control reg update
+    
+       - qcom bam dma resource leak fix
+    
+       - cppi slave transfer fix when idle&quot;
+    
+    * tag &#39;dmaengine-fix-5.4-rc6&#39; of git://git.infradead.org/users/vkoul/slave-dma:
+      dmaengine: cppi41: Fix cppi41_dma_prep_slave_sg() when idle
+      dmaengine: qcom: bam_dma: Fix resource leak
+      dmaengine: sprd: Fix the possible memory leak issue
+      dmaengine: xilinx_dma: Fix control reg update in vdma_channel_set_config
+      dmaengine: xilinx_dma: Fix 64-bit simple AXIDMA transfer
+      dmaengine: imx-sdma: fix size check for sdma script_number
+      dmaengine: tegra210-adma: fix transfer failure
+      dmaengine: sprd: Fix the link-list pointer register configuration issue
+
+<span class=" -Color -Color-Yellow">commit 320000e72ec0613e164ce9608d865396fb2da278</span>
+Merge: b66b449872d3 160c63f909ff
+Author: Linus Torvalds &lt;torvalds@linux-foundation.org&gt;
+Date:   Wed Oct 30 14:17:18 2019 +0100
+
+    Merge tag &#39;iommu-fixes-v5.4-rc5&#39; of git://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu
+    
+    Pull iommu fixes from Joerg Roedel:
+    
+     - Follow-on fix for Renesas IPMMU to get rid of a redundant error
+       message.
+    
+     - Quirk for AMD IOMMU to make it work on another Acer Laptop model with
+       a broken IVRS ACPI table.
+    
+     - Fix for a panic at kdump in the Intel IOMMU driver.
+    
+    * tag &#39;iommu-fixes-v5.4-rc5&#39; of git://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu:
+      iommu/vt-d: Fix panic after kexec -p for kdump
+      iommu/amd: Apply the same IVRS IOAPIC workaround to Acer Aspire A315-41
+      iommu/ipmmu-vmsa: Remove dev_err() on platform_get_irq() failure
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --stat -2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">commit e472c64aa4fa6150c6076fd36d101d667d71c30a (</span><span class=" -Color -Color-Bold -Color-Bold-Cyan">HEAD -&gt; </span><span class=" -Color -Color-Bold -Color-Bold-Green">master</span><span class=" -Color -Color-Yellow">)</span>
+Merge: 320000e72ec0 bacdcb6675e1
+Author: Linus Torvalds &lt;torvalds@linux-foundation.org&gt;
+Date:   Thu Oct 31 07:34:09 2019 +0000
+
+    Merge tag &#39;dmaengine-fix-5.4-rc6&#39; of git://git.infradead.org/users/vkoul/slave-dma
+    
+    Pull dmaengine fixes from Vinod Koul:
+     &quot;A few fixes to the dmaengine drivers:
+    
+       - fix in sprd driver for link list and potential memory leak
+    
+       - tegra transfer failure fix
+    
+       - imx size check fix for script_number
+    
+       - xilinx fix for 64bit AXIDMA and control reg update
+    
+       - qcom bam dma resource leak fix
+    
+       - cppi slave transfer fix when idle&quot;
+    
+    * tag &#39;dmaengine-fix-5.4-rc6&#39; of git://git.infradead.org/users/vkoul/slave-dma:
+      dmaengine: cppi41: Fix cppi41_dma_prep_slave_sg() when idle
+      dmaengine: qcom: bam_dma: Fix resource leak
+      dmaengine: sprd: Fix the possible memory leak issue
+      dmaengine: xilinx_dma: Fix control reg update in vdma_channel_set_config
+      dmaengine: xilinx_dma: Fix 64-bit simple AXIDMA transfer
+      dmaengine: imx-sdma: fix size check for sdma script_number
+      dmaengine: tegra210-adma: fix transfer failure
+      dmaengine: sprd: Fix the link-list pointer register configuration issue
+
+<span class=" -Color -Color-Yellow">commit 320000e72ec0613e164ce9608d865396fb2da278</span>
+Merge: b66b449872d3 160c63f909ff
+Author: Linus Torvalds &lt;torvalds@linux-foundation.org&gt;
+Date:   Wed Oct 30 14:17:18 2019 +0100
+
+    Merge tag &#39;iommu-fixes-v5.4-rc5&#39; of git://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu
+    
+    Pull iommu fixes from Joerg Roedel:
+    
+     - Follow-on fix for Renesas IPMMU to get rid of a redundant error
+       message.
+    
+     - Quirk for AMD IOMMU to make it work on another Acer Laptop model with
+       a broken IVRS ACPI table.
+    
+     - Fix for a panic at kdump in the Intel IOMMU driver.
+    
+    * tag &#39;iommu-fixes-v5.4-rc5&#39; of git://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu:
+      iommu/vt-d: Fix panic after kexec -p for kdump
+      iommu/amd: Apply the same IVRS IOAPIC workaround to Acer Aspire A315-41
+      iommu/ipmmu-vmsa: Remove dev_err() on platform_get_irq() failure
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="limiting-log-output">
+<h2>Limiting log output<a class="headerlink" href="#limiting-log-output" title="Permalink to this headline">¶</a></h2>
+<p>There are various dimensions along which the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> can be processed and thereby limited. The various filters are</p>
+<div class="section" id="author-filter">
+<h3>Author filter<a class="headerlink" href="#author-filter" title="Permalink to this headline">¶</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">--author=&lt;author&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--committer=&lt;committer&gt;</span></code></p>
+<p>Let us check how many commits <strong>Linus Torvalds</strong> has made to the repository.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline --author<span class="o">=</span><span class="s1">&#39;Linus Torvalds&#39;</span> <span class="p">|</span> wc -l 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28417
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline --author<span class="o">=</span>Linus <span class="p">|</span> wc -l
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31846
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline --author<span class="o">=</span>Torvalds <span class="p">|</span> wc -l 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28417
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="temporal-filter">
+<h3>Temporal filter<a class="headerlink" href="#temporal-filter" title="Permalink to this headline">¶</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">--since=2.weeks</span></code> or <code class="docutils literal notranslate"><span class="pre">--since='2019-11-01'</span></code> or <code class="docutils literal notranslate"><span class="pre">since='1</span> <span class="pre">year</span> <span class="pre">2</span> <span class="pre">day</span> <span class="pre">3</span> <span class="pre">minutes</span> <span class="pre">ago'</span></code></p>
+<p>Let us check how many commits are made since <strong>01 October 2019</strong> to the repository.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline --since<span class="o">=</span><span class="m">2019</span>-10-01 <span class="p">|</span> wc -l
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1277
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="filters-honour-boolean-and-logic">
+<h3>Filters honour Boolean AND logic<a class="headerlink" href="#filters-honour-boolean-and-logic" title="Permalink to this headline">¶</a></h3>
+<p>Let us check how many commits are made by <strong>Linus Torvalds</strong> since <strong>01 October 2019</strong> to the repository.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline --since<span class="o">=</span><span class="m">2019</span>-10-01 --author<span class="o">=</span><span class="s1">&#39;Linus Torvalds&#39;</span> <span class="p">|</span> wc -l
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>142
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="path-filter">
+<h3>Path filter<a class="headerlink" href="#path-filter" title="Permalink to this headline">¶</a></h3>
+<p>Limit log output to specific sub-directory within the repository using <code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">&lt;path&gt;</span></code>. Specify this at the <strong>end</strong> of all the options. If the <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">&lt;pathname&gt;</span></code> is mentioned apriori for the <code class="docutils literal notranslate"><span class="pre">git</span></code> command to track then this path should be relative to the <code class="docutils literal notranslate"><span class="pre">&lt;pathname&gt;</span></code></p>
+<p>Let us check how many commits are made in the <strong>Documentation</strong> subdirectory. Documenation is an important part of the Kernel project.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline -- Documentation/ <span class="p">|</span> wc -l
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41582
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="string-filter-git-s-pickaxe">
+<h3>String filter: Git’s <strong>pickaxe</strong><a class="headerlink" href="#string-filter-git-s-pickaxe" title="Permalink to this headline">¶</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">&lt;string&gt;</span></code> we can filter the commits which changed the number of occurences of <string>. The string can be an English word, a function-name, etc. This option is called colloquially Git’s <strong>pickaxe</strong> option.</p>
+<p>Let us check how many commits have introduced or changed the occurences of the word <strong>usb</strong> in the <strong>Documentation</strong> subdirectory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux log --oneline -S <span class="s1">&#39;usb&#39;</span> -- Documentation/ <span class="p">|</span> wc -l
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>964
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="git-remote-working-with-remotes">
+<h1><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span></code>: Working with remotes<a class="headerlink" href="#git-remote-working-with-remotes" title="Permalink to this headline">¶</a></h1>
+<p>The relationship between the clone and its <code class="docutils literal notranslate"><span class="pre">origin</span></code> (the remote from which we have cloned) can be tracked by <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">--verbose</span></code> command.</p>
+<div class="section" id="check-the-remote-source-to-the-current-clone-of-the-repository">
+<h2>Check the remote source to the current clone of the repository<a class="headerlink" href="#check-the-remote-source-to-the-current-clone-of-the-repository" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux remote --verbose
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>origin	https://github.com/torvalds/linux.git (fetch)
+origin	https://github.com/torvalds/linux.git (push)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="fetch-the-latest-commits-to-the-repository">
+<h2>Fetch the latest commits to the repository<a class="headerlink" href="#fetch-the-latest-commits-to-the-repository" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux fetch origin
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="git-tag-viewing-the-release-history">
+<h1><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span></code>: Viewing the release history<a class="headerlink" href="#git-tag-viewing-the-release-history" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="total-releases-of-linux-kernel">
+<h2>Total releases of linux kernel<a class="headerlink" href="#total-releases-of-linux-kernel" title="Permalink to this headline">¶</a></h2>
+<p>The development cycle history of the Linux kernel project is very mature with close to <span class="math notranslate nohighlight">\(600\)</span> releases over a span of $$ years. let us find out the number of releases using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span></code> command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux tag <span class="p">|</span> wc -l
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>626
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="latest-10-versions-of-linux">
+<h2>Latest 10 versions of linux<a class="headerlink" href="#latest-10-versions-of-linux" title="Permalink to this headline">¶</a></h2>
+<p>Let us get the latest 10 release info</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git -C linux tag <span class="p">|</span> tail -10
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v5.3-rc5
+v5.3-rc6
+v5.3-rc7
+v5.3-rc8
+v5.4-rc1
+v5.4-rc2
+v5.4-rc3
+v5.4-rc4
+v5.4-rc5
+v5.4-rc6
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Git-Verbs-%28Intermediate%29.html" title="previous page">Git Verbs (Intermediate)</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
